@@ -1,0 +1,38 @@
+{
+  "name": "bootcamp-chat-app",
+  "description": "Sogeti Digital Bootcamp - Electron Chat App Session",
+  "main": "backend/index.js",
+  "authors": [
+    "Bas Klinkhamer @ Sogeti"
+  ],
+  "license": "MIT",
+  "keywords": [
+    "sogeti",
+    "electron",
+    "angularJS",
+    "sass"
+  ],
+  "homepage": "",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular-electron": "^0.2.1",
+    "angular-localforage": "^1.3.5",
+    "angular-material-icons": "^0.7.1",
+    "angular-md5": "^0.1.10",
+    "angular-material": "^1.1.3",
+    "animate.css": "^3.5.2",
+    "Ionicons": "ionicons#^2.0.1",
+    "angular-socket-io": "^0.7.0",
+    "js-md5": "md5#^0.4.2",
+    "moment": "^2.18.1",
+    "localforage": "^1.5.0",
+    "material-color": "^2.3.2"
+  }
+}
