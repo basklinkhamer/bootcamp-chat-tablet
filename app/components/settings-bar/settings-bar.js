@@ -4,7 +4,8 @@ angular.module('app')
     controllerAs: 'vm',
     templateUrl: 'components/settings-bar/settings-bar.html',
     bindings: {
-        showButtons: '<'
+        showButtons: '<',
+        title: '<'
     }
 });
 
@@ -70,7 +71,7 @@ function settingsBarController(
                 .closeTo('#serverToggle');
 
             var infoDialog = $mdDialog.alert()
-                .title('Welcome to the Bootcamp Chat App!')
+                .title('Welcome to ' + vm.title)
                 .textContent('This app was lovingly created by Bas Klinkhamer and expanded by you, '+ vm.settings.username +'! You\'re a rockstar!')
                 .ariaLabel('App Information')
                 .ok('Rock on!');

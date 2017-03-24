@@ -2,9 +2,9 @@ angular.module('app')
 
 .service('Settings',settingsService);
 
-settingsService.$inject = ['$q'];
+settingsService.$inject = ['$q','Backend'];
 
-function settingsService($q){
+function settingsService($q, Backend){
     var settingsKey = 'bootcamp-chat-app-settings';
 
     var service = {
@@ -80,12 +80,7 @@ function settingsService($q){
 
     function resetData(){
         var defer = $q.defer();
-        var resetFillData = {
-            username: 'Anonymous User',
-            email: 'anonymous@sogeti.com',
-            defaultRoom: 'general',
-            serverAddress: 'http://localhost:1704'
-        };
+        var resetFillData = Backend.getDefaults();
         saveSettings(resetFillData)
         .then(function(success){
             if(success){

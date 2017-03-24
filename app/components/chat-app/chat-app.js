@@ -14,7 +14,8 @@ chatAppController.$inject = [
     '$http',
     'md5',
     'Messages',
-    'Settings'
+    'Settings',
+    'Backend'
 ];
 
 function chatAppController(
@@ -24,7 +25,8 @@ function chatAppController(
     $http,
     md5,
     Messages,
-    Settings
+    Settings,
+    Backend
 ){
 
     var vm = this;
@@ -54,6 +56,7 @@ function chatAppController(
     function addMessageToRoom(event, data){
         data.hash = md5.createHash(data.email);
         vm.messages.push(data);
+        Backend.notification(data);
     }
 
     function addUserToRoom(event, data){

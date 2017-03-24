@@ -10,8 +10,9 @@ angular.module('app')
     }
 });
 
-chatOptionsController.$inject = [];
+chatOptionsController.$inject = ['Backend'];
 
-function chatOptionsController(){
+function chatOptionsController(Backend){
     var vm = this;
+    vm.appTitle = Backend.getTitle();
 }

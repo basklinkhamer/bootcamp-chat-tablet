@@ -1,11 +1,12 @@
 .chat-room {
     &__navigation {
-        max-height: 56px;
+        min-height: 48px;
+        max-height: 48px;
         background-color: $clr-teal-800;
     }
     &__window {
-        max-height: calc(100vh - 112px);
-        min-height: calc(100vh - 112px);
+        max-height: calc(100vh - 96px);
+        min-height: calc(100vh - 96px);
         @include pattern-bg-food($clr-green-800,$clr-green-50,.1);
         background-attachment: fixed;
     }
@@ -86,6 +87,7 @@
 
     @media screen and (min-width: 960px) {
         &__navigation {
+            min-height: 64px;
             max-height: 64px;
         }
         &__window {

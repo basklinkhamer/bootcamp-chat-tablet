@@ -6,7 +6,7 @@
 
     <md-toolbar
         class="chat-options__navigation">
-        <h1 class="md-toolbar-tools">Bootcamp Chat App</h1>
+        <h1 class="md-toolbar-tools">{{ vm.appTitle }}</h1>
     </md-toolbar>
     <md-content>
         <md-list class="chat-options__list">
@@ -25,6 +25,6 @@
             </md-list-item>
             <md-divider ng-repeat-end></md-divider>
         </md-list>
-        <settings-bar show-buttons="false"></settings-bar>
+        <settings-bar title="vm.appTitle" show-buttons="false"></settings-bar>
     </md-content>
 </md-sidenav>
