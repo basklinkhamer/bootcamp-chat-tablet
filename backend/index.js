@@ -38,7 +38,7 @@ const startApp = () => {
     // and load the index.html of the app.
     mainWindow.loadURL(url.format({
         // Use index.html
-        pathname: path.join(__dirname, '../public/index.html'),
+        pathname: path.join(__dirname, '../frontend/index.html'),
         // Open it locally
         protocol: 'file:',
         slashes: true
