@@ -233,13 +233,14 @@ gulp.task('dist-html',['dist-sass'], function() {
 });
 
 // Tasks run in sequence when running 'gulp'
-gulp.task('dist', ()=>{
-    runSequence('dist-clean',['dist-copy-assets', 'dist-html']);
+gulp.task('dist', () => {
+    runSequence('dev-dry-run','dist-clean',['dist-copy-assets', 'dist-html']);
 });
 gulp.task('development', ()=>{
     runSequence('dev-clean',['dev-copy-assets','serve','watch']);
 });
+gulp.task('dev-dry-run', ()=>{
+    runSequence('dev-clean','dev-copy-assets','dev-sass', 'dev-js', 'dev-html');
+})
 gulp.task('clean',       ['dev-clean','dist-clean']);
 gulp.task('default',     ['development'] );
-
-// TODO: Find proper documentation format for gulp
