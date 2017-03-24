@@ -1,11 +1,11 @@
 .chat-room {
     &__navigation {
-        max-height: 64px;
+        max-height: 56px;
         background-color: $clr-teal-800;
     }
     &__window {
-        max-height: calc(100vh - 128px);
-        min-height: calc(100vh - 128px);
+        max-height: calc(100vh - 112px);
+        min-height: calc(100vh - 112px);
         @include pattern-bg-food($clr-green-800,$clr-green-50,.1);
         background-attachment: fixed;
     }
@@ -82,5 +82,15 @@
     }
     &__message {
 
+    }
+
+    @media screen and (min-width: 960px) {
+        &__navigation {
+            max-height: 64px;
+        }
+        &__window {
+            max-height: calc(100vh - 128px);
+            min-height: calc(100vh - 128px);
+        }
     }
 }
