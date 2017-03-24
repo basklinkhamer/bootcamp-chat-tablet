@@ -2,9 +2,9 @@ angular.module('app')
 
 .service('Settings',settingsService);
 
-settingsService.$inject = ['$q','$localForage'];
+settingsService.$inject = ['$q'];
 
-function settingsService($q, $localForage){
+function settingsService($q){
     var settingsKey = 'bootcamp-chat-app-settings';
 
     var service = {
@@ -18,9 +18,18 @@ function settingsService($q, $localForage){
 
     function getAllSettings(){
         var defer = $q.defer();
-        $localForage.getItem(settingsKey)
+        localforage.getItem(settingsKey)
         .then(function(data){
-            defer.resolve(data);
+            if(data!==null){
+                defer.resolve(data);
+            } else {
+                resetData().then(function(success){
+                    getAllSettings()
+                    .then(function(settings){
+                        defer.resolve(settings);
+                    });
+                });
+            }
         }).catch(function(error){
             defer.reject(error);
         });
@@ -29,7 +38,7 @@ function settingsService($q, $localForage){
 
     function saveSettings(settingsObject){
         var defer = $q.defer();
-        $localForage.setItem(settingsKey,settingsObject)
+        localforage.setItem(settingsKey,settingsObject)
         .then(function(){
             defer.resolve(true);
         }).catch(function(error){

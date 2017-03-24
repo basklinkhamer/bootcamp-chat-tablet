@@ -10,7 +10,9 @@ angular.module('app')
 chatAppController.$inject = [
     '$log',
     '$rootScope',
-    '$scope','$http',
+    '$scope',
+    '$http',
+    'md5',
     'Messages',
     'Settings'
 ];
@@ -20,6 +22,7 @@ function chatAppController(
     $rootScope,
     $scope,
     $http,
+    md5,
     Messages,
     Settings
 ){
@@ -49,7 +52,7 @@ function chatAppController(
     }
 
     function addMessageToRoom(event, data){
-        data.hash = md5(data.email);
+        data.hash = md5.createHash(data.email);
         vm.messages.push(data);
     }
 

@@ -1,8 +1,7 @@
 angular.module('app',[
     'ngMaterial',
     'ngAnimate',
-    'ngMdIcons',
-    'LocalForageModule',
+    'ngMd5',
     'btford.socket-io'
 ]).run(onAppInit);
 
