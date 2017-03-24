@@ -1,16 +1,23 @@
-import { app, BrowserWindow} from 'electron';
+import { app, BrowserWindow } from 'electron';
 import url from 'url';
+import fs from 'fs';
 import path from 'path';
 
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
 let mainWindow;
 
+let settingsObject = JSON.parse(
+    fs.readFileSync(path.join(__dirname, './app-settings.json'), 'utf8')
+);
+
+const frontendComm = require('./frontend-comm.js');
+
 const startApp = () => {
     // Create the browser window.
     mainWindow = new BrowserWindow({
         // Set the window title
-        title: 'Digital Bootcamp - Electron Chat App',
+        title: settingsObject.title,
         // Set window dimensions
         width: 800,
         height: 600,
@@ -30,9 +37,10 @@ const startApp = () => {
         frame: true,
         // Settings for the 'chromium' part of our window
         webPreferences: {
-            devTools: true,
+            devTools: false,
             textAreasAreResizable: false
-        }
+        },
+        icon: path.join(__dirname, settingsObject.icon)
     });
 
     // and load the index.html of the app.
