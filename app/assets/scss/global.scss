@@ -1,0 +1,88 @@
+/**
+ * Your bootcamp-chat-app Project Stylesheet
+ *
+ * Please try to maintain the following ITCSS structure at all times:
+ *
+ * 1. Settings ...... Global variables, config switches.
+ * 2. Tools ......... Default mixins and functions.
+ * 3. Generic ....... Ground-zero styles (resets, box-sizing).
+ * 4. Base .......... Unclassed HTML elements (type selectors).
+ * 5. Objects ....... Cosmetic-free design patterns.
+ * 6. Components .... Designed components, chunks of UI.
+ * 7. Trumps ........ Helpers and overrides.
+ *
+ */
+
+
+
+
+/* Dependencies
+   ========================================================================= */
+@import 'bower_components/animate.css/source/base';
+@import 'bower_components/angular-material/angular-material.scss';
+@import 'bower_components/material-color/material-color';
+@import 'bower_components/Ionicons/scss/ionicons';
+
+
+
+
+/* Settings
+   ========================================================================= */
+
+@import 'settings/generic';
+
+
+
+
+/* Tools
+   ========================================================================= */
+
+@import 'tools/mixins';
+
+
+
+
+/* Generic
+  ========================================================================= */
+
+.bootcamp-chat-app {
+
+
+
+
+
+/* Base
+   ========================================================================= */
+
+
+
+
+
+/* Objects
+   ========================================================================= */
+
+@import 'objects/ionicons';
+
+
+
+
+/* Components
+   ========================================================================= */
+
+@import 'components/chat-options';
+@import 'components/chat-room';
+@import 'components/chat-message-bar';
+@import 'components/settings-bar';
+
+
+
+
+
+/* Trumps
+   ========================================================================= */
+
+@import 'trumps/overflow';
+@import 'trumps/margin';
+
+
+}

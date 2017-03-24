@@ -1,0 +1,12 @@
+<md-toolbar
+    class="chat-message-bar">
+    <div class="md-toolbar-tools" layout="columns">
+        <input
+        class="chat-message-bar__input"
+        type="text"
+        placeholder="Type a message"
+        ng-model="vm.message"
+        ng-enter="vm.sendMessage()"
+        autofocus>
+    </div>
+</md-toolbar>

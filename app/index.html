@@ -1,10 +1,54 @@
 <!DOCTYPE html>
-<html>
-  <head>
+<html lang="en">
+
+<head>
     <meta charset="utf-8">
-    <title></title>
-  </head>
-  <body>
-    Well hey there!!!
-  </body>
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>bootcamp-chat-app</title>
+
+    <!-- build:css css/style.css -->
+    <link href="assets/css/global.css" type="text/css" rel="stylesheet" />
+    <!-- endbuild -->
+
+    <!-- build:css css/vendor.css -->
+        <!-- bower:css -->
+        <!-- endbower -->
+    <!-- endbuild -->
+
+    <!-- build:js js/vendor.js -->
+        <script src="assets/scripts/socket.io.js"></script>
+        <!-- bower:js -->
+            <script type="text/javascript" src="bower_components/js-md5/build/md5.min.js"></script>
+                <script type="text/javascript" src="bower_components/moment/moment.js"></script>
+            <script type="text/javascript" src="bower_components/localforage/dist/localforage.js"></script>
+            <script type="text/javascript" src="bower_components/angular/angular.js"></script>
+            <script type="text/javascript" src="bower_components/angular-localforage/dist/angular-localForage.js"></script>
+            <script type="text/javascript" src="bower_components/angular-animate/angular-animate.js"></script>
+            <script type="text/javascript" src="bower_components/angular-aria/angular-aria.js"></script>
+            <script type="text/javascript" src="bower_components/angular-material/angular-material.js"></script>
+            <script type="text/javascript" src="bower_components/angular-socket-io/socket.js"></script>
+            <script type="text/javascript" src="bower_components/angular-material-icons/angular-material-icons.js"></script>
+        <!-- endbower -->
+    <!--endbuild -->
+
+    <!-- build:js js/app.js -->
+    <script src="assets/scripts/app.js"></script>
+    <script src="directives/ng-enter.js"></script>
+    <script src="directives/scrolldown.js"></script>
+    <script src="components/chat-app/chat-app.js"></script>
+    <script src="components/chat-options/chat-options.js"></script>
+    <script src="components/chat-room/chat-room.js"></script>
+    <script src="components/chat-message-bar/chat-message-bar.js"></script>
+    <script src="components/settings-bar/settings-bar.js"></script>
+    <script src="services/socket-io.service.js"></script>
+    <script src="services/messages.service.js"></script>
+    <script src="services/settings.service.js"></script>
+    <!-- endbuild -->
+</head>
+
+<body class="bootcamp-chat-app" ng-app="app">
+    <chat-app></chat-app>
+</body>
+
 </html>

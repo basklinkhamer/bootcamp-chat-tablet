@@ -1,0 +1,21 @@
+.chat-options {
+    &__navigation {
+        max-height: 64px;
+        background-color: $clr-teal-600;
+    }
+    &__list {
+        min-height: calc(100vh - 64px);
+        display: relative;
+    }
+    &__list-item {
+        &--active {
+            background-color: $clr-green-100;
+            .chat-options {
+                &__room-name {
+                    font-weight: 500;
+                    color: $clr-green-700;
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,31 @@
+.settings-bar {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    display: flex;
+    justify-content: flex-end;
+    flex-direction: row-reverse;
+    &__toggle {
+        margin-top: 8px;
+        line-height: 10px;
+        font-size: 25px;
+        line-height: 25px !important;
+
+        @for $i from 2 through 5 {
+            $in:  200 * ($i - 1);
+            $out: 500 - (100 * ($i - 1));
+            &:nth-of-type(#{$i}){
+                transition: opacity #{$in}ms ease-out;
+                &.ng-hide {
+                    opacity: 0;
+                    transition: opacity #{$out}ms ease-out;
+                }
+            }
+        }
+
+        &--large {
+            margin-top: 0;
+            line-height: 25px;
+        }
+    }
+}

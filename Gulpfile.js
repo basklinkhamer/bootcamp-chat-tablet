@@ -19,10 +19,10 @@ var browserSync  = require('browser-sync').create();
 var wiredep      = require('wiredep').stream;
 
 // Setup Paths and Patterns
-var develop      = __dirname + '/app/';
-var serve        = __dirname + '/.tmp/';
-var production   = __dirname + '/frontend/';
-var assets       = __dirname + '/assets/';
+var develop      = './app/';
+var serve        = './.tmp/';
+var production   = './frontend/';
+var assets       = './assets/';
 
 var paths = {
     develop: {
@@ -48,7 +48,7 @@ var paths = {
         sass:   production + assets + '/css',
         js:     production + assets + '/scripts',
     },
-    bower: ['./bower_components','./bower_components/bootstrap-sass/assets/stylesheets']
+    bower: ['/bower_components']
 };
 
 var devAssets = [
@@ -86,6 +86,10 @@ gulp.task('serve', ['dev-sass', 'dev-js', 'dev-html'], function() {
             baseDir: serve,
             routes: {
                 "/bower_components": "bower_components"
+            },
+            middleware: function (req, res, next) {
+                res.setHeader('Access-Control-Allow-Origin', '*');
+                next();
             }
         }
     });
