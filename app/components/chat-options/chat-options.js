@@ -14,5 +14,9 @@ chatOptionsController.$inject = ['Backend'];
 
 function chatOptionsController(Backend){
     var vm = this;
-    vm.appTitle = Backend.getTitle();
+    vm.$onInit = componentInit;
+
+    function componentInit(){
+        vm.appTitle = Backend.getTitle();
+    }
 }
