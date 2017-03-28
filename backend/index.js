@@ -37,7 +37,7 @@ const startApp = () => {
         frame: true,
         // Settings for the 'chromium' part of our window
         webPreferences: {
-            devTools: false,
+            devTools: true,
             textAreasAreResizable: false
         },
         icon: path.join(__dirname, settingsObject.icon)
