@@ -5,6 +5,6 @@
         "username" : "Anonymous Sogetist",
         "email" : "info@sogeti.com",
         "defaultRoom" : "general",
-        "serverAddress" : "http://hikaru.1vt.nl"
+        "serverAddress" : "http://hikaru.1vt.nl:1704"
     }
 }
