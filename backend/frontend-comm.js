@@ -24,5 +24,8 @@ ipcMain.on('notify', (event, args) => {
           sound: true,
           icon: path.join(__dirname, settingsObject.icon),
         });
+        event.returnValue = 'sent';
+    } else {
+        event.returnValue = 'not sent';
     }
 });
