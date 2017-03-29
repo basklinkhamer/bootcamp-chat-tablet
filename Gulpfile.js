@@ -100,7 +100,7 @@ gulp.task('watch', function() {
     gulp
         // Watch the html-files in app for changes,
         // and reload connected browsers when something happens
-        .watch(paths.develop.html, ['dev-html'])
+        .watch(paths.develop.html, ['dev-html','dev-sass'])
         .on('change', function(event){
             console.log('File ' + event.path + ' was ' + event.type + '.');
         });
@@ -118,7 +118,7 @@ gulp.task('watch', function() {
     gulp
         // Watch the asset/js folder for change,
         // and run js task when something happens
-        .watch([paths.develop.js,paths.develop.modules], ['dev-js'])
+        .watch([paths.develop.js,paths.develop.modules], ['dev-js','dev-js:modules'])
         // When there is a change,
         // log a message in the console
         .on('change', function(event) {
@@ -180,7 +180,7 @@ gulp.task('dev-js:modules', function() {
         .pipe(browserSync.stream());
 });
 
-gulp.task('dev-js', ['dev-js:modules'], function() {
+gulp.task('dev-js', function() {
     return gulp
         .src(paths.develop.js)
         .pipe(sourcemaps.init())
@@ -191,7 +191,7 @@ gulp.task('dev-js', ['dev-js:modules'], function() {
         .pipe(browserSync.stream());
 });
 
-gulp.task('dev-html', ['dev-sass'], function() {
+gulp.task('dev-html', function() {
     return gulp
         .src(paths.develop.html)
         .pipe(gulp.dest(serve))
@@ -223,7 +223,7 @@ gulp.task('dist-copy-assets', function(){
         .pipe(gulp.dest(production));
 });
 
-gulp.task('dist-html',['dist-sass'], function() {
+gulp.task('dist-html', function() {
     return gulp
         .src(paths.develop.html)
         .pipe(useref({ searchPath: serve }))
@@ -233,14 +233,40 @@ gulp.task('dist-html',['dist-sass'], function() {
 });
 
 // Tasks run in sequence when running 'gulp'
-gulp.task('dist', () => {
-    runSequence('dev-dry-run','dist-clean',['dist-copy-assets', 'dist-html']);
+gulp.task('dist', (done)=>{
+    runSequence(
+        'dev-clean',
+        'dev-copy-assets',
+        'dev-sass',
+        'dev-js',
+        'dev-html',
+        'dist-clean',
+        'dist-copy-assets',
+        'dist-html'
+    );
+    done();
 });
-gulp.task('development', ()=>{
-    runSequence('dev-clean',['dev-copy-assets','serve','watch']);
+gulp.task('development', (done)=>{
+    runSequence(
+        'dev-clean',
+        'dev-copy-assets',
+        'dev-sass',
+        'dev-js',
+        'dev-js:modules',
+        'serve',
+        'watch'
+    );
+    done();
 });
-gulp.task('dev-dry-run', ()=>{
-    runSequence('dev-clean','dev-copy-assets','dev-sass', 'dev-js', 'dev-html');
-})
+gulp.task('dev-dry-run', (done)=>{
+    runSequence(
+        'dev-clean',
+        'dev-copy-assets',
+        'dev-sass',
+        'dev-js',
+        'dev-html'
+    );
+    done();
+});
 gulp.task('clean',       ['dev-clean','dist-clean']);
 gulp.task('default',     ['development'] );
