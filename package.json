@@ -1,38 +1,15 @@
 {
-  "name": "bootcamp-chat-app",
-  "productName": "bootcamp-chat-app",
+  "name": "bootcamp-chat-tablet",
+  "productName": "bootcamp-chat-tablet",
   "version": "1.0.0",
-  "description": "Sogeti Digital Bootcamp - Electron Chat App Session",
-  "main": "backend/index.js",
+  "description": "Cordova-based tablet version of the bootcamp-chat-app.",
+  "main": "www/index.html",
   "scripts": {
-    "start": "gulp dist && electron-forge start",
-    "lint": "eslint backend"
+    "start": "cordova run browser"
   },
   "keywords": [],
   "author": "Bas Klinkhamer @ Sogeti",
   "license": "MIT",
-  "config": {
-    "forge": {
-      "make_targets": {
-        "win32": [
-          "squirrel"
-        ],
-        "darwin": [
-          "zip"
-        ],
-        "linux": [
-          "deb",
-          "rpm"
-        ]
-      },
-      "electronPackagerConfig": {},
-      "electronWinstallerConfig": {
-        "name": "bootcamp_chat_app"
-      },
-      "electronInstallerDebian": {},
-      "electronInstallerRedhat": {}
-    }
-  },
   "dependencies": {
     "browser-sync": "^2.13.0",
     "electron-compile": "^6.1.3",
@@ -58,7 +35,6 @@
   },
   "devDependencies": {
     "babel-preset-stage-0": "^6.22.0",
-    "electron-prebuilt-compile": "1.6.2",
     "eslint": "^3.18.0"
   }
 }

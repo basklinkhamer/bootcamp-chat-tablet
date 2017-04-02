@@ -1,0 +1,21 @@
+<div class="settings-bar">
+    <md-button
+        id="settingsToggle"
+        ng-click="vm.toggleSettingsButtons()"
+        aria-label="Settings"
+        class="md-fab  md-primary settings-bar__toggle settings-bar__toggle--large"
+        ng-class="vm.showButtons===false?'md-warn':''">
+        <md-tooltip md-direction="top" md-delay="300"> Settings </md-tooltip>
+        <md-icon class="icon ion-android-settings"></md-icon>
+    </md-button>
+    <md-button
+        ng-repeat="(key,item) in vm.settingsDialogs"
+        id="{{ item.id }}"
+        ng-click="vm.showPrompt(item.dialog,key)"
+        ng-show="vm.showButtons"
+        aria-label="{{ item.label }}"
+        class="md-fab md-mini md-primary settings-bar__toggle">
+        <md-tooltip md-direction="top" md-delay="300"> {{ item.label }} </md-tooltip>
+        <md-icon class="icon" ng-class="item.icon"></md-icon>
+    </md-button>
+</div>

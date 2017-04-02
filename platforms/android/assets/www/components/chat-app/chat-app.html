@@ -1,0 +1,18 @@
+<section layout="row">
+    <chat-options
+        rooms="vm.rooms"
+        update="vm.switchRoom(newRoom)"
+        current-room="vm.currentRoom">
+    </chat-options>
+    <md-content flex class="overflow-hidden">
+        <chat-room
+            messages="vm.messages"
+            self="vm.self"
+            current-room="vm.currentRoom">
+        </chat-room>
+        <chat-message-bar
+            self="vm.self"
+            current-room="vm.currentRoom">
+        </chat-message-bar>
+    </md-content>
+</section>

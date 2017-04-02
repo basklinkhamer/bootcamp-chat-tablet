@@ -20,8 +20,8 @@ var wiredep      = require('wiredep').stream;
 
 // Setup Paths and Patterns
 var develop      = './app/';
-var serve        = './.tmp/';
-var production   = './frontend/';
+var serve        = './www/';
+var production   = './www/';
 var assets       = './assets/';
 
 var paths = {
@@ -240,7 +240,6 @@ gulp.task('dist', (done)=>{
         'dev-sass',
         'dev-js',
         'dev-html',
-        'dist-clean',
         'dist-copy-assets',
         'dist-html'
     );

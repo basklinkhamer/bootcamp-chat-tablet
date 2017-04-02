@@ -2,6 +2,23 @@
 <html lang="en">
 
 <head>
+<!--
+    Customize this policy to fit your own app's needs. For more guidance, see:
+        https://github.com/apache/cordova-plugin-whitelist/blob/master/README.md#content-security-policy
+    Some notes:
+        * gap: is required only on iOS (when using UIWebView) and is needed for JS->native communication
+        * https://ssl.gstatic.com is required only on Android and is needed for TalkBack to function properly
+        * Disables use of inline scripts in order to mitigate risk of XSS vulnerabilities. To change this:
+            * Enable inline JS: add 'unsafe-inline' to default-src
+    -->
+    <meta http-equiv="Content-Security-Policy" content="
+    default-src * data: gap: https://ssl.gstatic.com 'unsafe-inline';
+    style-src * 'unsafe-inline';
+    media-src *;
+    img-src * data: content:;">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="msapplication-tap-highlight" content="no">
+    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -27,18 +44,14 @@
     <!-- endbower -->
 <!-- endbuild -->
 
-<!-- bower:js -->
-    <script type="text/javascript" src="../bower_components/angular/angular.js"></script>
-<!-- endbower -->
-
 <!-- build:js js/angular-package.js -->
     <!-- bower:js -->
+        <script type="text/javascript" src="../bower_components/angular/angular.js"></script>
         <script type="text/javascript" src="../bower_components/angular-md5/angular-md5.min.js"></script>
         <script type="text/javascript" src="../bower_components/angular-animate/angular-animate.js"></script>
         <script type="text/javascript" src="../bower_components/angular-aria/angular-aria.js"></script>
         <script type="text/javascript" src="../bower_components/angular-material/angular-material.js"></script>
         <script type="text/javascript" src="../bower_components/angular-socket-io/socket.js"></script>
-        <script type="text/javascript" src="../bower_components/angular-electron/angular-electron.js"></script>
     <!-- endbower -->
 <!-- endbuild -->
 
@@ -60,6 +73,10 @@
 
 <body class="bootcamp-chat-app" ng-app="app">
     <chat-app></chat-app>
+
+    <!-- cordova.js will 404 during development -->
+    <script type="text/javascript" src="cordova.js"></script>
+
 </body>
 
 </html>

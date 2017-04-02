@@ -1,0 +1,30 @@
+<md-sidenav
+    class="md-sidenav-left chat-options"
+    md-component-id="left"
+    md-is-locked-open="$mdMedia('gt-md')"
+    md-whiteframe="1">
+
+    <md-toolbar
+        class="chat-options__navigation">
+        <h1 class="md-toolbar-tools">{{ vm.appTitle }}</h1>
+    </md-toolbar>
+    <md-content>
+        <md-list class="chat-options__list">
+            <md-list-item
+                class="md-2-line chat-options__list-item"
+                ng-class="vm.currentRoom==room?'chat-options__list-item--active':''"
+                ng-click="vm.update({newRoom: room})"
+                ng-repeat-start="room in vm.rooms">
+                <img
+                    ng-src="https://api.adorable.io/avatars/40/{{ room }}.png"
+                    class="md-avatar"
+                    alt="#{{ room }}" />
+                <div class="md-list-item-text">
+                    <h3 class="chat-options__room-name">#{{ room }}</h3>
+                </div>
+            </md-list-item>
+            <md-divider ng-repeat-end></md-divider>
+        </md-list>
+        <settings-bar title="vm.appTitle" show-buttons="false"></settings-bar>
+    </md-content>
+</md-sidenav>

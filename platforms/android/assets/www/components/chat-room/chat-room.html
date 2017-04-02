@@ -1,0 +1,53 @@
+<div class="chat-room">
+    <md-toolbar
+        class="chat-room__navigation">
+        <div class="md-toolbar-tools">
+            <md-button
+                ng-click="vm.toggleSideNav()"
+                class="md-icon-button"
+                aria-label="Open Sidemenu"
+                hide-gt-md>
+                <md-icon class="icon ion-android-menu"></md-icon>
+            </md-button>
+            <md-button class="md-fab md-mini no-padding">
+            <img
+                ng-src="https://api.adorable.io/avatars/40/{{ vm.currentRoom }}.png"
+                class="md-avatar"
+                aria-label="{{ room }}"
+                alt="#{{ room }}" />
+            </md-button>
+            <h2 flex md-truncate>#{{ vm.currentRoom }}</h2>
+        </div>
+    </md-toolbar>
+    <md-content class="chat-room__window" scrolldown="vm.messages">
+        <md-list>
+            <div ng-repeat="message in vm.messages">
+                <div
+                    class="chat-room__service"
+                    ng-if="message.type==='service'">
+                     <div class="chat-room__service-msg">
+                         {{ message.username }} {{ message.content }} #{{ vm.currentRoom }}
+                     </div>
+                </div>
+                <md-list-item
+                    class="md-3-line md-long-text chat-room__item"
+                    ng-if="message.type!=='service'"
+                    ng-class="message.email==vm.self.email?'chat-room__item--self':''">
+                    <img
+                        ng-src="https://gravatar.com/avatar/{{ message.hash }}?s=300&d=mm"
+                        class="md-avatar chat-room__avatar"
+                        alt="{{ message.username }}" />
+                    <div class="md-list-item-text chat-room__message-group no-margin overflow-visible" layout="column" layout-padding>
+                        <h3 flex class="chat-room__username">
+                            {{ message.email==vm.self.email?'You':message.username }}
+                            <span>{{ message.time }}</span>
+                        </h3>
+                        <p flex class="chat-room__message">
+                            {{ message.content }}
+                        </p>
+                    </div>
+                </md-list-item>
+            </div>
+        </md-list>
+    </md-content>
+</div>
